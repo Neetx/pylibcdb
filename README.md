@@ -87,3 +87,22 @@ And then you have to copy the shared object to your working directory or to use 
 ### Contacts
 
 [neetx](neetx@protonmail.com)
+
+### License
+
+Copyright 2020 Neetx
+
+This file is part of pylibcdb.
+
+pylibcdb is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+pylibcdb is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with pylibcdb.  If not, see <http://www.gnu.org/licenses/>.

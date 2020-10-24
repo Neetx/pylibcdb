@@ -22,7 +22,7 @@ python setup.py install
 ### Basic usage
 
 ```python
-from pylibcdb import LibcDB
+from pylibcdb.LibcDB import LibcDB
 
 libcdb = LibcDB("/path/to/your/libc-database")
 libc_name = libcdb.find_by_address("0x7fe7ac9a7fc0") #leaked __libc_start_main
@@ -42,7 +42,7 @@ In this way there's no need to launch "find" and "download" scripts manually wit
 
 ```python
 from pwn import *
-from pylibcdb import LibcDB
+from pylibcdb.LibcDB import LibcDB
 
 p = process("./vuln_test")
 elf = ELF("./vuln_test")

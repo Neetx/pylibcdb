@@ -14,7 +14,7 @@ There aren't python dependeces for now, but you need to install [libc_database](
 
 ### Basic usage
 
-```python=3
+```python
 from pylibcdb import LibcDB
 
 libcdb = LibcDB("/path/to/your/libc-database")
@@ -33,7 +33,7 @@ In this way there's no need to launch "find" and "download" scripts manually wit
 
 #### A more detailed example
 
-```python=3
+```python
 from pwn import *
 from pylibcdb import LibcDB
 

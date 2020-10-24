@@ -29,6 +29,7 @@ libc6_2.31-0ubuntu9.1_amd64
 /path/to/your/libc-database/libs/libc6_2.31-0ubuntu9.1_amd64/libc-2.31.so
 ```
 This .so can be easily analyzed (or used with [pwntools](https://github.com/Gallopsled/pwntools) ELF()) to discovery function addresses and build a ROP chain.
+In this way there's no need to launch "find" and "download" scripts manually with several copy-paste.
 
 #### A more detailed example
 
@@ -67,6 +68,14 @@ system = libc.sym["system"]
 At this point we have all we need to craft a final ROP chain and get shell. This is a workflow example in facts things may (sure) change for each scenario, but the idea is to not let target binary crashes and not stop the exploit execution to launch libc-database scripts manually.
 
 Later I will release a complete and working example with a vulnerable binary.
+
+#### Scripts
+Without this library you have to launch:
+```
+./find __libc_start_main LEAKED_ADDRESS
+./download LIBC_NAME_OUTPUT
+```
+And then you have to copy the shared object to your working directory or to use its absolute path.
 
 ### Contacts
 

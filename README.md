@@ -12,6 +12,13 @@ There aren't python dependeces for now, but you need to install [libc_database](
 
 - x86_64 Linux
 
+### Installation
+```bash
+git clone https://github.com/Neetx/pylibcdb
+cd pylibcdb
+python setup.py install
+```
+
 ### Basic usage
 
 ```python

@@ -19,8 +19,8 @@ along with pylibcdb.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
 
-def find(address, working_dir):
-    completed_process = subprocess.run([working_dir + "/find", "__libc_start_main", address], capture_output=True)
+def find(address, working_dir, symbol="__libc_start_main"):
+    completed_process = subprocess.run([working_dir + "/find", symbol, address], capture_output=True)
     #proc = subprocess.Popen([working_dir + "/find", "__libc_start_main", address], stdout=subprocess.PIPE, shell=True)
     #(out, err) = proc.communicate()
     libc_list = completed_process.stdout.decode("utf-8").split("\n") #get decoded output into list

@@ -29,8 +29,8 @@ class LibcDB:
     def cwd(self, working_dir):
     	self.working_dir = working_dir
 
-    def find_by_address(self, leaked_address):
-        self.libc_name = wrapper.find(leaked_address, self.working_dir)
+    def find_by_address(self, leaked_address, symbol="__libc_start_main"):
+        self.libc_name = wrapper.find(leaked_address, self.working_dir, symbol)
         return self.libc_name
 
     def download_by_name(self, libc_name):

@@ -25,7 +25,7 @@ python setup.py install
 from pylibcdb.LibcDB import LibcDB
 
 libcdb = LibcDB("/path/to/your/libc-database")
-libc_name = libcdb.find_by_address("0x7fe7ac9a7fc0") #leaked __libc_start_main
+libc_name = libcdb.find_by_address("0x7fe7ac9a7fc0", symbol="__libc_start_main") #leaked __libc_start_main is default for symbol
 print(libc_name)
 libc_path = libcdb.download_by_name(libc_name)
 print(libc_path)
@@ -62,7 +62,7 @@ received = p.recvline().strip()
 leak = u64(received.ljust(8, "\x00".encode()))
 
 libcdb = LibcDB("/path/to/your/libc-database")
-libc_name = libcdb.find_by_address(leak) #leaked __libc_start_main
+libc_name = libcdb.find_by_address(leak, symbol="__libc_start_main") #leaked __libc_start_main is default for symbol
 libc_path = libcdb.download_by_name(libc_name)
 
 libc = ELF(libc_path)

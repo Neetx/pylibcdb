@@ -84,6 +84,24 @@ Without this library you have to launch:
 ```
 And then you have to copy the shared object to your working directory or to use its absolute path.
 
+#### Multiple output
+Often there are multiple libc candidates, specially using only one leaked address (for now it works only in this way).
+Now you can choose which libc to get and use, you should make a choice second your context and information you have
+
+Example:
+```
+[*] Leaked libc address,  __libc_start_main: 0x7f9342728b10
+Select version:
+1 - ubuntu-old-eglibc (libc6_2.11.1-0ubuntu7.21_i386)
+2 - ubuntu-glibc (libc6_2.27-3ubuntu1.3_amd64)
+3 - ubuntu-old-eglibc (libc6-i386_2.11.1-0ubuntu7.21_amd64)
+4 - ubuntu-old-glibc (libc6-x32_2.21-0ubuntu4.3_amd64)
+5 - ubuntu-old-glibc (libc6-x32_2.21-0ubuntu4.3_i386)
+>2
+NAME OF DISCOVERED LIBC: libc6_2.27-3ubuntu1.3_amd64
+PATH OF DISCOVERED LIBC: /home/neetx/software/libc-database/libs/libc6_2.27-3ubuntu1.3_amd64/libc-2.27.so
+```
+
 ### Contacts
 
 [neetx](neetx@protonmail.com)

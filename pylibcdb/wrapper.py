@@ -26,8 +26,20 @@ def find(address, working_dir, symbol="__libc_start_main"):
     libc_list = completed_process.stdout.decode("utf-8").split("\n") #get decoded output into list
     #print(libc_list)
     #print(completed_process.stderr)
-    libc_first = libc_list[0]   #get first element
-    libc_name = libc_first.split('(', 1)[1].split(')')[0] #get the string within ()
+    libc_list = libc_list[:-1]
+    if len(libc_list) > 1:
+        print("Select version:")
+        for i, lib in enumerate(libc_list):
+            print(str(i+1) + " - " + lib)
+        choice = input(">")
+        if int(choice) <= len(libc_list) and int(choice) >= 1:
+            libc_choice = libc_list[int(choice)-1]
+        else:
+            print("Invalid choice, exiting...")
+            exit(0)
+    else:
+        libc_choice = libc_list[0]  
+    libc_name = libc_choice.split('(', 1)[1].split(')')[0] #get the string within ()
     return libc_name
 
 def download(libc_name, working_dir):
@@ -45,7 +57,7 @@ def download(libc_name, working_dir):
         prefix = "Getting "
         path = "libs/" + second_last_line[len(prefix):] #estract the good output
     path = working_dir + "/" + path
-    #print (path)
+    #print ("ls " + path + "/libc-*.so")
     completed_process = subprocess.run("ls " + path + "/libc-*.so", shell=True, cwd =path + "/" ,capture_output=True) #passing string instead of list works
     #print(completed_process.stdout)
     #print(completed_process.stderr)

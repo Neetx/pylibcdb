@@ -49,7 +49,7 @@ elf = ELF("./vuln_test")
 rop = ROP(elf)
 
 puts = elf.plt['puts']
-main = elf.symbol['main']
+main = elf.symbols['main']
 libc_start_main = elf.symbols['__libc_start_main']
 pop_rdi = (rop.find_gadget(['pop rdi', 'ret']))[0]
 ret = (rop.find_gadget(['ret']))[0]

@@ -21,11 +21,9 @@ import subprocess
 
 def find(address, working_dir, symbol="__libc_start_main"):
     completed_process = subprocess.run([working_dir + "/find", symbol, address], capture_output=True)
-    #proc = subprocess.Popen([working_dir + "/find", "__libc_start_main", address], stdout=subprocess.PIPE, shell=True)
-    #(out, err) = proc.communicate()
+    #print(completed_process.stdout)
     libc_list = completed_process.stdout.decode("utf-8").split("\n") #get decoded output into list
     #print(libc_list)
-    #print(completed_process.stderr)
     libc_list = libc_list[:-1]
     if len(libc_list) > 1:
         print("Select version:")
@@ -47,7 +45,9 @@ def download(libc_name, working_dir):
     #proc = subprocess.Popen([working_dir + "/download", libc_name], stdout=subprocess.PIPE, shell=True)
     #(out, err) = proc.communicate()
     output_lines = completed_process.stdout.decode("utf-8").split("\n") #get decoded output into list
+    #print(output_lines)
     second_last_line = output_lines[-2:-1][0]  #get second_last element which contain the path and pop from list
+    #print(second_last_line)
     if len(output_lines)>2: #if it is a new libc
         #print("New libc")
         prefix = "  -> Package saved to "
@@ -57,8 +57,8 @@ def download(libc_name, working_dir):
         prefix = "Getting "
         path = "libs/" + second_last_line[len(prefix):] #estract the good output
     path = working_dir + "/" + path
-    #print ("ls " + path + "/libc-*.so")
-    completed_process = subprocess.run("ls " + path + "/libc-*.so", shell=True, cwd =path + "/" ,capture_output=True) #passing string instead of list works
+    #print ("ls " + path + "/libc.so.6")
+    completed_process = subprocess.run("ls " + path + "/libc.so.6", shell=True, cwd =path + "/" ,capture_output=True) #passing string instead of list works
     #print(completed_process.stdout)
     #print(completed_process.stderr)
     #print(completed_process.args)
